@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{ main_message }}
+
+<form method="POST">
+    <div class="form-group">
+    {% csrf_token %}
+    {{ resource_form }}
+    <input type='Submit' value='{{ main_message }}'/>
+    </div>
+</form>
+
+{% endblock %}

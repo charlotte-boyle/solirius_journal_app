@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<table class="table table-bordered">
+   <thead>
+     <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Link</th>
+        <th scope="col"> </th>
+    </tr>
+   </thead>
+    {% for res in journal_resource %}
+    <tr>
+        <td>{{ res.Name }}</td>
+        <td><a href='{{ res.Link }}'>{{ res.Link }}</a></td>
+        <td><a href="{% url 'journal:new_resource' res.id%}">Edit</a></td>
+        <td><a href="{% url 'journal:delete_resource' res.id%}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<button type="button" class="btn btn-outline-primary"><a href="{% url 'journal:new_resource' %}">Create new resource here</a>
+</button>
+
+{% endblock content %}
